@@ -59,13 +59,7 @@ func (p *plugin) Setup() (unset bool, err error) {
 	p.domains = append(p.domains, p.Domains...)
 
 	for _, uri := range p.Uris {
-		if "/" == uri {
-			uri = ""
-		}
-		if strings.HasPrefix(uri, "/") {
-			uri = uri[1:]
-		}
-
+		uri = strings.TrimPrefix(uri, "/")
 		for _, domain := range p.domains {
 			url := fmt.Sprintf("%s://%s/%s", p.Protocol, domain, uri)
 			if strings.HasSuffix(uri, "*") {

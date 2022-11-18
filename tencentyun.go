@@ -23,7 +23,7 @@ func (p *plugin) tencentyun() (err error) {
 }
 
 func (p *plugin) tencentyunUrls(client *cdn.Client) (err error) {
-	if 0 == len(p.directories) {
+	if 0 == len(p.urls) {
 		return
 	}
 
