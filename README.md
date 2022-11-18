@@ -16,7 +16,7 @@ Drone持续集成系统CDN插件，提供常见的CDN对接服务（腾讯云、
 非常简单，只需要在`.drone.yml`里增加配置
 
 ```yaml
-- name: 上传到腾讯云
+- name: 刷新缓存
   image: ccr.ccs.tencentyun.com/dronestock/cdn
   settings:
     provider: tencentyun
