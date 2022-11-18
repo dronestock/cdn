@@ -25,4 +25,4 @@ RUN set -ex \
 
 
 # 执行命令
-ENTRYPOINT /bin/plugin
+ENTRYPOINT /bin/cdn
