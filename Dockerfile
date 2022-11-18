@@ -5,25 +5,19 @@ LABEL author="storezhang<华寅>" \
 email="storezhang@gmail.com" \
 qq="160290688" \
 wechat="storezhang" \
-# TODO 增加描述信息
-description="Drone持续集成Docker插件，增加以下功能：1、xxx；2、xxx"
+description="Drone持续集成系统CDN插件，提供常见的CDN对接服务（腾讯云、阿里云、百度云、创世云等），提供地址或目录刷新功能，方便在CI/CD过程中及时刷新相应的文件"
 
 
 # 复制文件
-COPY plugin /bin
+COPY cdn /bin
 
 
 RUN set -ex \
     \
     \
     \
-    && apk update \
-    && apk --no-cache add docker \
-    \
-    \
-    \
     # 增加执行权限
-    && chmod +x /bin/plugin \
+    && chmod +x /bin/cdn \
     \
     \
     \

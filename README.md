@@ -9,7 +9,7 @@
 ![最佳语言](https://img.shields.io/github/languages/top/dronestock/drone)
 ![星星个数](https://img.shields.io/github/stars/dronestock/drone?style=social)
 
-Drone插件模板，要编写Drone插件，可以从此模板开始创建项目
+Drone持续集成系统CDN插件，提供常见的CDN对接服务（腾讯云、阿里云、百度云、创世云等），提供地址或目录刷新功能，方便在CI/CD过程中及时刷新相应的文件
 
 ## 使用
 
@@ -17,13 +17,16 @@ Drone插件模板，要编写Drone插件，可以从此模板开始创建项目
 
 ```yaml
 - name: 上传到腾讯云
-  image: ccr.ccs.tencentyun.com/dronestock/cos
+  image: ccr.ccs.tencentyun.com/dronestock/cdn
   settings:
-    secret_id: xxx
-    secret_key: xxx
+    provider: tencentyun
+    id: xxx
+    key: xxx
+    uris:
+      - xxx
 ```
 
-更多使用教程，请参考[文档](https://www.dronestock.tech/plugin/cos)
+更多使用教程，请参考[文档](https://www.dronestock.tech/plugin/cdn)
 
 ## 交流
 

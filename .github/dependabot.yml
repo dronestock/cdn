@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: gomod
     directory: /
     schedule:
-      interval: weekly
+      interval: daily
     pull-request-branch-name:
       separator: "-"
     assignees:
@@ -11,10 +11,10 @@ updates:
     reviewers:
       - storezhang
 
-  - package-ecosystem: npm
-    directory: /doc
+  - package-ecosystem: docker
+    directory: /
     schedule:
-      interval: weekly
+      interval: daily
     pull-request-branch-name:
       separator: "-"
     assignees:

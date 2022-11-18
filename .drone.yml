@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: # TODO
+name: 发布
 
 
 clone:
@@ -17,8 +17,7 @@ steps:
       - name: go
         path: /var/lib/go
     settings:
-      # 可以修改输出文件名，如果修改，Dockerfile也要一起修改
-      output: plugin
+      output: cdn
 
   - name: 发布
     image: ccr.ccs.tencentyun.com/dronestock/docker
@@ -32,8 +31,7 @@ steps:
       PASSWORD_CCR:
         from_secret: password_tencentyun_ccr
     settings:
-      # TODO
-      repository: dronestock/xxx
+      repository: dronestock/cdn
       registries:
         - username: dronestock
           password: $${PASSWORD_DOCKER}
