@@ -57,10 +57,10 @@ func (p *plugin) Setup() (unset bool, err error) {
 		for _, domain := range p.domains {
 			url := fmt.Sprintf("%s://%s/%s", domain.Protocol, domain.Name, uri)
 			if _, ok := p.directories[domain.Name]; !ok {
-				p.directories[domain.Name] = make([]*string, 0, 0)
+				p.directories[domain.Name] = make([]*string, 0)
 			}
 			if _, ok := p.urls[domain.Name]; !ok {
-				p.urls[domain.Name] = make([]*string, 0, 0)
+				p.urls[domain.Name] = make([]*string, 0)
 			}
 
 			if strings.HasSuffix(uri, "*") {
