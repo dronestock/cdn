@@ -21,7 +21,7 @@ type plugin struct {
 	// 地址
 	Url string `default:"${URL=/}" validate:"required_without=Urls"`
 	// 地址列表
-	Urls []string `default:"${URLS}" validate:"required"`
+	Urls []string `default:"${URLS}"`
 
 	domains     []*domain
 	urls        map[string][]*string
