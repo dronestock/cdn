@@ -1,9 +1,11 @@
 package main
 
 func (p *plugin) refresh() (undo bool, err error) {
-	switch p.Provider {
-	case providerTencentyun:
-		err = p.tencentyun()
+	for _, domain := range p.domains {
+		switch domain.Provider {
+		case providerTencentyun:
+			err = p.tencentyun(domain)
+		}
 	}
 
 	return

@@ -12,33 +12,27 @@ import (
 type plugin struct {
 	drone.Base
 
-	// 提供商
-	Provider provider `default:"${PROVIDER=tencentyun}" validate:"required,oneof=tencentyun aliyun"`
-	// 应用用户名
-	Id string `default:"${ID}" validate:"required_if=Provider tencentyun"`
-	// 应用用户名
-	Key string `default:"${KEY}" validate:"required_if=Provider tencentyun"`
 	// 区域
 	Regin string `default:"${REGIN}"`
 	// 域名
-	Domain string `default:"${DOMAIN}" validate:"required_without=Domains"`
+	Domain *domain `default:"${DOMAIN}" validate:"required_without=Domains"`
 	// 域名列表
-	Domains []string `default:"${DOMAINS}"`
-	// 协议
-	Protocol string `default:"${PROTOCOL=https}" validate:"oneof=https http"`
+	Domains []*domain `default:"${DOMAINS}"`
+	// 地址
+	Url string `default:"${URL=/}" validate:"required_without=Urls"`
 	// 地址列表
-	Uris []string `default:"${URIS}" validate:"required"`
+	Urls []string `default:"${URLS}" validate:"required"`
 
-	domains     []string
-	urls        []*string
-	directories []*string
+	domains     []*domain
+	urls        map[string][]*string
+	directories map[string][]*string
 }
 
 func newPlugin() drone.Plugin {
 	return &plugin{
-		domains:     make([]string, 0, 1),
-		urls:        make([]*string, 0, 1),
-		directories: make([]*string, 0, 1),
+		domains:     make([]*domain, 0, 1),
+		urls:        make(map[string][]*string),
+		directories: make(map[string][]*string),
 	}
 }
 
@@ -53,19 +47,26 @@ func (p *plugin) Steps() drone.Steps {
 }
 
 func (p *plugin) Setup() (unset bool, err error) {
-	if "" != p.Domain {
+	if nil != p.Domain {
 		p.domains = append(p.domains, p.Domain)
 	}
 	p.domains = append(p.domains, p.Domains...)
 
-	for _, uri := range p.Uris {
+	for _, uri := range p.Urls {
 		uri = strings.TrimPrefix(uri, "/")
 		for _, domain := range p.domains {
-			url := fmt.Sprintf("%s://%s/%s", p.Protocol, domain, uri)
+			url := fmt.Sprintf("%s://%s/%s", domain.Protocol, domain.Name, uri)
+			if _, ok := p.directories[domain.Name]; !ok {
+				p.directories[domain.Name] = make([]*string, 0, 0)
+			}
+			if _, ok := p.urls[domain.Name]; !ok {
+				p.urls[domain.Name] = make([]*string, 0, 0)
+			}
+
 			if strings.HasSuffix(uri, "*") {
-				p.directories = append(p.directories, &url)
+				p.directories[domain.Name] = append(p.directories[domain.Name], &url)
 			} else {
-				p.urls = append(p.urls, &url)
+				p.urls[domain.Name] = append(p.urls[domain.Name], &url)
 			}
 		}
 	}
@@ -73,9 +74,9 @@ func (p *plugin) Setup() (unset bool, err error) {
 	return
 }
 
-func (p *plugin) Fields() gox.Fields {
-	return gox.Fields{
-		field.String("provider", string(p.Provider)),
-		field.Strings("uris", p.Uris...),
+func (p *plugin) Fields() gox.Fields[any] {
+	return gox.Fields[any]{
+		field.New("domains", p.domains),
+		field.New("uris", p.Urls),
 	}
 }
