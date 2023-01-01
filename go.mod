@@ -6,7 +6,7 @@ require (
 	github.com/dronestock/drone v0.6.3
 	github.com/goexl/gox v0.1.6
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.569
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.569
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.570
 )
 
 require (
