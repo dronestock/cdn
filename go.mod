@@ -3,10 +3,10 @@ module github.com/dronestock/cdn
 go 1.19
 
 require (
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.650
 	github.com/dronestock/drone v1.0.0
 	github.com/goexl/gox v0.3.4
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.650
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.669
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.669
 )
 
 require (
