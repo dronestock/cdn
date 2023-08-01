@@ -3,14 +3,14 @@ module github.com/dronestock/cdn
 go 1.19
 
 require (
-	github.com/dronestock/drone v1.0.1
+	github.com/dronestock/drone v1.0.2
 	github.com/goexl/gox v0.3.4
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.692
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.692
 )
 
 require (
-	github.com/antonmedv/expr v1.12.5 // indirect
+	github.com/antonmedv/expr v1.12.6 // indirect
 	github.com/drone/envsubst v1.0.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
