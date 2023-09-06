@@ -5,8 +5,8 @@ go 1.19
 require (
 	github.com/dronestock/drone v1.0.2
 	github.com/goexl/gox v0.3.4
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.739
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.739
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.742
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.742
 )
 
 require (
