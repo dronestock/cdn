@@ -1,9 +1,10 @@
-package main
+package internal
 
 import (
 	"fmt"
 	"strings"
 
+	"github.com/dronestock/cdn/internal/internal/config"
 	"github.com/dronestock/drone"
 	"github.com/goexl/gox"
 	"github.com/goexl/gox/field"
@@ -11,29 +12,15 @@ import (
 
 type plugin struct {
 	drone.Base
+	config.Secret
+	config.Refresh `default:"${REFRESH}" json:"refresh,omitempty"`
 
 	// 区域
 	Regin string `default:"${REGIN}"`
-	// 域名
-	Domain *domain `default:"${DOMAIN}" validate:"required_without=Domains"`
-	// 域名列表
-	Domains []*domain `default:"${DOMAINS}"`
-	// 地址
-	Url string `default:"${URL=/}" validate:"required_without=Urls"`
-	// 地址列表
-	Urls []string `default:"${URLS}"`
-
-	domains     []*domain
-	urls        map[string][]*string
-	directories map[string][]*string
 }
 
-func newPlugin() drone.Plugin {
-	return &plugin{
-		domains:     make([]*domain, 0, 1),
-		urls:        make(map[string][]*string),
-		directories: make(map[string][]*string),
-	}
+func New() drone.Plugin {
+	return new(plugin)
 }
 
 func (p *plugin) Config() drone.Config {
