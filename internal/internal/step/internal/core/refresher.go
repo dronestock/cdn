@@ -6,8 +6,8 @@ import (
 	"github.com/dronestock/cdn/internal/internal/config"
 )
 
-type Provider interface {
-	Init() error
+type Refresher interface {
+	Initiate
 
 	Refresh(*context.Context, *config.Refresh) error
 }
