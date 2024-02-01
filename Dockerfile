@@ -1,4 +1,4 @@
-FROM storezhang/alpine:3.19.0
+FROM storezhang/alpine:3.19.1
 
 
 LABEL author="storezhang<华寅>" \
