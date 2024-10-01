@@ -1,11 +1,11 @@
 module github.com/dronestock/cdn
 
 go 1.21
-toolchain go1.22.5
+toolchain go1.23.2
 
 require (
 	github.com/dronestock/drone v1.2.5
-	github.com/goexl/gox v0.5.2
+	github.com/goexl/gox v1.8.9
 	github.com/goexl/log v0.0.7
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.993
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.993
