@@ -1,7 +1,6 @@
 module github.com/dronestock/cdn
 
-go 1.21
-toolchain go1.23.2
+go 1.23
 
 require (
 	github.com/dronestock/drone v1.2.6
