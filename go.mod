@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/dronestock/drone v1.2.6
-	github.com/goexl/gox v1.8.9
+	github.com/goexl/gox v1.9.2
 	github.com/goexl/log v0.0.7
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.1052
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1052
