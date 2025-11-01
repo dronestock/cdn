@@ -9,7 +9,7 @@ require (
 	github.com/goexl/gox v1.9.2
 	github.com/goexl/log v0.1.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.1.33
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.37
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.1.48
 )
 
 require (
